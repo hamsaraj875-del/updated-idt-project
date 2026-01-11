@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Energy Conservation System</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="topBar">
+  <h1>⚡ Home Energy Conservation System</h1>
+  <div>
+    <button onclick="openSetup()">Add Things</button>
+    <button onclick="_clearAll()">Clear All Data</button>
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+
+  </div>
+</div>
+
+<div id="setupSection" class="section">
+  <h2>Enter Appliances</h2>
+
+  <input type="text" id="applianceName" placeholder="Appliance Name">
+  <input type="number" id="appliancePower" placeholder="Power (Watts)">
+  <button onclick="addAppliance()">Add Appliance</button>
+
+  <h3>Appliances Added</h3>
+  <ul id="applianceList"></ul>
+
+  <h3>Maximum Monthly Energy Limit (Wh)</h3>
+  <input type="number" id="maxLimit">
+
+  <br><br>
+  <button onclick="saveSetup()">Save & Close</button>
+  <button onclick="closeSetup()">Cancel</button>
+</div>
+
+<div id="monitorSection" class="section">
+  <h2>Select Appliances Turned ON</h2>
+  <div id="monitorAppliances" class="small"></div>
+
+  <h3>Start Time</h3>
+  <input type="time" id="startTime">
+
+  <div style="margin-top:8px;">
+    <button onclick="startMonitoring()">Start</button>
+    <span style="margin-left:18px;">Timer: <span id="timer">00:00:00</span></span>
+  </div>
+
+  <div style="margin-top:8px;">
+    <button onclick="stopMonitoring()">Stop</button>
+  </div>
+
+  <div id="notifications"></div>
+</div>
+
+<div id="resultsButtons" style="display:none; margin-top:12px;">
+  <button onclick="showGraph()">Show Graph</button>
+  <button onclick="showSuggestionBox()">Show Suggestions</button>
+  <button onclick="showNotificationsBox()">Show Notifications</button>
+</div>
+
+<hr>
+
+<h2 id="graphHeader" style="display:none;">Energy Usage Graph (Last 7 Sessions)</h2>
+<canvas id="energyChart" width="700" height="300" style="display:none;"></canvas>
+
+<!-- ✅ Responsive Pie Chart -->
+<div id="pieWrapper" style="display:none;">
+  <canvas id="appliancePieChart">
+    Pie Chart
+  </canvas>
+</div>
+
+<div id="suggestionsBox"></div>
+<div id="notificationsBox"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
